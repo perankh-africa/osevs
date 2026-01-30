@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/perankh/osevs/schema/osevs.schema.json",
+  "title": "OSEVS Skill Evidence & Verification Schema",
+  "type": "object",
+  "required": ["subject", "skill", "evidence", "verification", "issued_at"],
+  "properties": {
+    "subject": {
+      "type": "object",
+      "required": ["subject_id"],
+      "properties": {
+        "subject_id": { "type": "string", "description": "Learner/user identifier (pseudonymous allowed)" },
+        "age_range": { "type": "string", "description": "Optional; prefer ranges over exact age" },
+        "country": { "type": "string" }
+      }
+    },
+    "skill": {
+      "type": "object",
+      "required": ["skill_name"],
+      "properties": {
+        "skill_id": { "type": "string" },
+        "skill_name": { "type": "string" },
+        "skill_domain": { "type": "string" },
+        "skill_level": { "type": "string", "description": "Descriptive level (e.g., beginner/intermediate/advanced)" },
+        "context": { "type": "string", "description": "Where/how the skill was demonstrated" }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["evidence_type", "description"],
+        "properties": {
+          "evidence_type": { "type": "string", "description": "artifact | task | observation | assessment | other" },
+          "description": { "type": "string" },
+          "uri": { "type": "string", "description": "Optional link to evidence (may be private)" },
+          "captured_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["verifier_role", "method"],
+      "properties": {
+        "verifier_role": { "type": "string", "description": "peer | mentor | practitioner | institution | employer" },
+        "method": { "type": "string", "description": "review | observation | challenge | assessment" },
+        "verifier_id": { "type": "string", "description": "Optional; pseudonymous allowed" },
+        "confidence": { "type": "string", "description": "low | medium | high" },
+        "notes": { "type": "string" }
+      }
+    },
+    "issued_at": { "type": "string", "format": "date-time" }
+  }
+}
