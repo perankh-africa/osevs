@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/perankh/osevs/schema/osevs.schema.json",
+  "$id": "https://github.com/perankh-africa/osevs/schema/osevs.schema.json",
   "title": "OSEVS Skill Evidence & Verification Schema",
   "type": "object",
   "required": ["subject", "skill", "evidence", "verification", "issued_at"],
